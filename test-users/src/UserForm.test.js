@@ -23,9 +23,9 @@ test('when form is submitted it calls onUserAdd',()=>{
     //try to render component
     render(<UserForm onUserAdd={mock}/>);
 
-    //find two inputsw
-    const [nameInput,emailinput] = screen.getAllByRole('textbox');
-
+    //find two inputs
+    const nameInput=screen.getByRole('textbox',{name:/name/i});
+    const emailinput=screen.getByRole('textbox',{name:/email/i});
     //Simulate typing in a name field
     user.click(nameInput);
     user.keyboard('Jane');
@@ -44,5 +44,5 @@ test('when form is submitted it calls onUserAdd',()=>{
     // expect(argList).toHaveLength(1);
     // expect(argList[0][0]).toEqual({name:'Jane',email:'jane123@gmail.com'});
     expect(mock).toHaveBeenCalled();
-    expect(mock).toHaveBeenCalledWith({name:'Jane',email:'jane123@gmail'});
+    expect(mock).toHaveBeenCalledWith({ name: 'Jane', email:'jane123@gmail.com'});
 })
