@@ -16,13 +16,12 @@ test('user form shows two inputs and a button',()=>{
 });
 
 test('when form is submitted it calls onUserAdd',()=>{
-    //not a best implementation
-    const argList=[];
-    const callBack=(...args) =>{
-        argList.push(args);
-    }
+
+    //best implementation
+    const mock=jest.fn();
+
     //try to render component
-    render(<UserForm onUserAdd={callBack}/>);
+    render(<UserForm onUserAdd={mock}/>);
 
     //find two inputsw
     const [nameInput,emailinput] = screen.getAllByRole('textbox');
@@ -42,6 +41,8 @@ test('when form is submitted it calls onUserAdd',()=>{
     user.click(button);
 
     //Assertion to make sure 'onUserAdd' is called with name/email
-    expect(argList).toHaveLength(1);
-    expect(argList[0][0]).toEqual({name:'Jane',email:'jane123@gmail.com'});
+    // expect(argList).toHaveLength(1);
+    // expect(argList[0][0]).toEqual({name:'Jane',email:'jane123@gmail.com'});
+    expect(mock).toHaveBeenCalled();
+    expect(mock).toHaveBeenCalledWith({name:'Jane',email:'jane123@gmail'});
 })
