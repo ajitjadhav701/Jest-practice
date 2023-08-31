@@ -16,11 +16,11 @@ const UserForm = ({ onUserAdd }) => {
       <form onSubmit={handleSubmit}>
           <div>
               <label htmlFor='name'>Name</label>
-              <input id='name' value={name} onChange={(e)=>setName(e.target.value)} />
+              <input label='name' id='name' value={name} onChange={(e)=>setName(e.target.value)} />
           </div>
           <div>
               <label htmlFor='email'>Email</label>
-              <input id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+              <input label='name' id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
           </div>
           <button>Add User</button>
       </form>
